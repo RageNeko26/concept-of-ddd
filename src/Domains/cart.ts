@@ -1,6 +1,17 @@
-import { Item } from "./item";
+import { Item, UnmarshalledItem } from "./item";
 
 export interface CartItem {
     item: Item;
     quantity: number;
+}
+
+export interface UnmarshalledCartItem {
+    item: UnmarshalledItem;
+    quantity: number;
+}
+
+export interface UnmarshalledCart {
+    id: string;
+    products: UnmarshalledCartItem[];
+    totalPrice: number;
 }
