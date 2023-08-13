@@ -1,0 +1,23 @@
+{
+  "name": "concept-of-ddd",
+  "version": "1.0.0",
+  "description": "Learning purpose ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RageNeko26/concept-of-ddd.git"
+  },
+  "keywords": [
+    "ddd",
+    "software-architecture"
+  ],
+  "author": "RageNeko26",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RageNeko26/concept-of-ddd/issues"
+  },
+  "homepage": "https://github.com/RageNeko26/concept-of-ddd#readme"
+}
