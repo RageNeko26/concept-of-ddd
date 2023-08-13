@@ -15,3 +15,8 @@ export interface UnmarshalledCart {
     products: UnmarshalledCartItem[];
     totalPrice: number;
 }
+
+export interface CartProps {
+    id?: string;
+    rawProducts?: UnmarshalledCartItem[]
+}
