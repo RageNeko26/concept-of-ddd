@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/RageNeko26/concept-of-ddd/issues"
   },
-  "homepage": "https://github.com/RageNeko26/concept-of-ddd#readme"
+  "homepage": "https://github.com/RageNeko26/concept-of-ddd#readme",
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
 }
