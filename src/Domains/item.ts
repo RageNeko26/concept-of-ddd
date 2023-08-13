@@ -1,0 +1,20 @@
+import { Entitiy } from "./entity";
+
+export interface UnmarshalledItem {
+    id? : string;
+    sku: string;
+    displayName: string;
+    price: number;
+}
+
+export class Item extends Entitiy<UnmarshalledItem> {
+    private constructor(props: UnmarshalledItem) {
+        const { id, ...data} = props;
+        super(data, id)
+    }
+
+    public static create(props: UnmarshalledItem): Item {
+        const instance = new Item(props) 
+        return instance
+    }
+}
