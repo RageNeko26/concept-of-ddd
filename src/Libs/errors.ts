@@ -5,3 +5,12 @@ class ExtendableError extends Error {
         Error.captureStackTrace(this, this.constructor);
     }
 }
+
+export class InternalError extends ExtendableError {
+    data: Record<string, unknown>
+
+    constructor(message: string, data: Record<string, unknown>) {
+        super(message);
+        this.data = data;
+    }
+}
