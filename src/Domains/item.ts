@@ -17,4 +17,29 @@ export class Item extends Entitiy<UnmarshalledItem> {
         const instance = new Item(props) 
         return instance
     }
+
+    public unmarshal(): UnmarshalledItem {
+        return {
+            id: this.id,
+            sku: this.sku,
+            displayName: this.displayName,
+            price: parseFloat(this.price.toString()),
+        }
+    }
+
+    get id(): string {
+        return this._id
+    }
+
+    get sku(): string {
+        return this.props.sku
+    }
+
+    get displayName(): string {
+        return this.props.displayName
+    }
+
+    get price(): number {
+        return this.props.price
+    }
 }
