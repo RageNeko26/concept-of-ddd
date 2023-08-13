@@ -1,3 +1,4 @@
+import { Entitiy } from "./entity";
 import { Item, UnmarshalledItem } from "./item";
 
 export interface CartItem {
@@ -19,4 +20,59 @@ export interface UnmarshalledCart {
 export interface CartProps {
     id?: string;
     rawProducts?: UnmarshalledCartItem[]
+}
+
+export class Cart extends Entitiy<CartProps> {
+    private _products: CartItem[];
+    private constructor( {id, ...data}: CartProps ) {
+        super(data, id);
+    }
+
+    public static create(props: CartProps): Cart {
+        const instance = new Cart(props);
+        instance.products = instance.props.rawProducts || [];
+        return instance;
+    }
+
+    public unmarshall(): UnmarshalledCart {
+        return {
+            id: this.id,
+            products: this.products.map((product) => ({
+                item: product.item.unmarshal(),
+                quantity: product.quantity,
+            })),
+            totalPrice: this.totalPrice,
+        };
+    }
+
+    private static validQuantity(quantity: number) {
+        return quantity >= 1 && quantity <= 100;
+    }
+
+    get id(): string {
+        return this._id;
+    }
+
+    get totalPrice(): number {
+        const sum = (acc: number, product: CartItem) => {
+            return acc + product.item.price * product.quantity
+        };
+
+        return this.products.reduce(sum, 0);
+    }
+
+    get products(): CartItem[] {
+        return this._products;
+    }
+
+    set products(products: CartItem[] | UnmarshalledCartItem[]) {
+        this._products = products.map((p) => ({
+            item: p.item instanceof Item ? p.item: Item.create(p.item),
+            quantity: p.quantity
+        }));
+    }
+
+    public add(item: Item, quantity: number): void {
+       
+    }
 }
