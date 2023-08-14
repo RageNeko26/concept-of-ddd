@@ -22,6 +22,7 @@
   "homepage": "https://github.com/RageNeko26/concept-of-ddd#readme",
   "dependencies": {
     "cuid": "^3.0.0",
+    "inversify": "^6.0.1",
     "ts-node": "^10.9.1"
   }
 }
