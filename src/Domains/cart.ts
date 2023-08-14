@@ -1,5 +1,5 @@
 import { ValidationError } from "../Libs/errors";
-import { Entitiy } from "./entity";
+import { Entity } from "./entity";
 import { Item, UnmarshalledItem } from "./item";
 
 export interface CartItem {
@@ -23,7 +23,7 @@ export interface CartProps {
     rawProducts?: UnmarshalledCartItem[]
 }
 
-export class Cart extends Entitiy<CartProps> {
+export class Cart extends Entity<CartProps> {
     private _products: CartItem[];
     private constructor( {id, ...data}: CartProps ) {
         super(data, id);

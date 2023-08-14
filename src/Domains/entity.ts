@@ -1,6 +1,10 @@
 import UniqueEntityID from 'cuid'
 
-export abstract class Entitiy<T> {
+const isEntity = <T>(v: Entity<T>): v isEntity<T> => {
+    return v.instanceof Entity
+}
+
+export abstract class Entity<T> {
     protected readonly _id: string;
     protected props: T;
 
