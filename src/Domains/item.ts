@@ -1,4 +1,4 @@
-import { Entitiy } from "./entity";
+import { Entity } from "./entity";
 
 export interface UnmarshalledItem {
     id? : string;
@@ -7,7 +7,7 @@ export interface UnmarshalledItem {
     price: number;
 }
 
-export class Item extends Entitiy<UnmarshalledItem> {
+export class Item extends Entity<UnmarshalledItem> {
     private constructor(props: UnmarshalledItem) {
         const { id, ...data} = props;
         super(data, id)
