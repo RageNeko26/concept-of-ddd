@@ -107,7 +107,7 @@ export class Cart extends Entity<CartProps> {
 
         this.products = products
     }
-
+    
     public empty(): void {
         this.products = []
     }
