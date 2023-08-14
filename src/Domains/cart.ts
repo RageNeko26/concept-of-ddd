@@ -1,3 +1,4 @@
+import { ValidationError } from "../Libs/errors";
 import { Entitiy } from "./entity";
 import { Item, UnmarshalledItem } from "./item";
 
@@ -73,6 +74,21 @@ export class Cart extends Entitiy<CartProps> {
     }
 
     public add(item: Item, quantity: number): void {
+       if(!Cart.validQuantity(quantity)) {
+            throw new ValidationError('SKU quantity is invalid!')
+       }
+       const index = this.products.findIndex((p) => p.item.sku == item.sku)
+
+       if (index > -1) {
+            const product = {
+                ...this.products[index],
+                quantity: this.products[index].quantity + quantity
+            }
+            if (!Cart.validQuantity(product.quantity)) {
+                throw new ValidationError('SKU Exceeded limit!')
+            }
+       }
+
        
     }
 }
