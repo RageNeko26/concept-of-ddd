@@ -87,8 +87,28 @@ export class Cart extends Entitiy<CartProps> {
             if (!Cart.validQuantity(product.quantity)) {
                 throw new ValidationError('SKU Exceeded limit!')
             }
-       }
 
-       
+            const products = [
+                ...this.products.slice(0, index),
+                product,
+                ...this.products.slice(index + 1)
+            ]
+
+            this.products = products
+       } else {
+            this.products = [...this.products, { item, quantity}]
+       }
+    }
+
+    public remove(itemID: string): void {
+        const products = this.products.filter(
+            (product) => product.item.id != itemID
+        )
+
+        this.products = products
+    }
+
+    public empty(): void {
+        this.products = []
     }
 }
