@@ -1,7 +1,7 @@
 import UniqueEntityID from 'cuid'
 
-const isEntity = <T>(v: Entity<T>): v isEntity<T> => {
-    return v.instanceof Entity
+const isEntity = <T>(v: Entity<T>): v is Entity<T> => {
+    return v instanceof Entity
 }
 
 export abstract class Entity<T> {
